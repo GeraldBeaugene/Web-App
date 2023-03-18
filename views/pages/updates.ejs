@@ -89,7 +89,7 @@
 </body>
 
 <script>
-    fetch('http://127.0.0.1:5000/api/planes/all', {
+    fetch('http://3.135.182.81/api/planes/all', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -113,7 +113,7 @@
         const payload = new FormData(document.getElementById('inputdata'))
         const data = Object.fromEntries(payload)
         console.log(data)
-        fetch('http://127.0.0.1:5000/api/planes/update',{
+        fetch('http://3.135.182.81/api/planes/update',{
             method: 'PUT',
             headers:{
                 'Content-Type':'application/json'
@@ -123,7 +123,7 @@
         window.alert('Plane Updated')
         window.location.reload()})
 
-    fetch('http://127.0.0.1:5000/api/airports/all', {
+    fetch('http://3.135.182.81/api/airports/all', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

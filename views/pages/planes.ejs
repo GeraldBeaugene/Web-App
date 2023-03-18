@@ -120,7 +120,7 @@
 </body>
 
 <script>
-    fetch('http://127.0.0.1:5000/api/planes/all', {
+    fetch('http://3.135.182.81/api/planes/all', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -155,7 +155,7 @@
         const data = Object.fromEntries(payload)
 
         if (e.submitter.id === 'addingplane'){
-            fetch('http://127.0.0.1:5000/api/planes/add',{
+            fetch('http://3.135.182.81/api/planes/add',{
                 method: 'POST',
                 headers:{
                     'Content-Type':'application/json'
@@ -167,7 +167,7 @@
         }
 
         if (e.submitter.id === 'deletingplane'){
-            fetch('http://127.0.0.1:5000/api/planes/delete',{
+            fetch('http://3.135.182.81/api/planes/delete',{
                 method: 'DELETE',
                 headers:{
                     'Content-Type':'application/json'

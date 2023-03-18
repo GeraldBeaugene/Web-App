@@ -133,7 +133,7 @@
 </body>
 
 <script>
-    fetch('http://127.0.0.1:5000/api/flights/all', {
+    fetch('http://3.135.182.81/api/flights/all', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -165,7 +165,7 @@
         })
     })
 
-    fetch('http://127.0.0.1:5000/api/planes/all', {
+    fetch('http://3.135.182.81/api/planes/all', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -183,7 +183,7 @@
             sel.append(opt)})
     })
 
-    fetch('http://127.0.0.1:5000/api/airports/all', {
+    fetch('http://3.135.182.81/api/airports/all', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -213,7 +213,7 @@
         const data = Object.fromEntries(payload)
 
         if (e.submitter.id === 'addflight'){
-            fetch('http://127.0.0.1:5000/api/flights/add',{
+            fetch('http://3.135.182.81/api/flights/add',{
                 method: 'POST',
                 headers:{
                     'Content-Type':'application/json'
@@ -225,7 +225,7 @@
         }
 
         if (e.submitter.id === 'deleteflight'){
-            fetch('http://127.0.0.1:5000/api/flights/delete',{
+            fetch('http://3.135.182.81/api/flights/delete',{
                 method: 'DELETE',
                 headers:{
                     'Content-Type':'application/json'

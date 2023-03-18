@@ -81,7 +81,7 @@ app.get('/reset', redirectHome, (req, res) =>{
 })
 
 app.post('/reset', redirectHome, loginlimiter, (req, res) =>{ // FINISH THIS
-    fetch('http://127.0.0.1:5000/api/reset',{
+    fetch('http://3.135.182.81/api/reset',{
         method: 'PUT',
         headers:{
             'Content-Type':'application/json'
@@ -93,7 +93,7 @@ app.post('/reset', redirectHome, loginlimiter, (req, res) =>{ // FINISH THIS
 })
 
 app.post('/register', loginlimiter, (req, res) =>{
-    fetch('http://127.0.0.1:5000/api/users/register',{
+    fetch('http://3.135.182.81/api/users/register',{
         method: 'POST',
         headers:{
             'Content-Type':'application/json'
@@ -109,7 +109,7 @@ app.get('/login',  (req, res) =>{
 })
 
 app.post('/login', loginlimiter, (req, res) =>{
-    fetch('http://127.0.0.1:5000/api/users/login',{
+    fetch('http://3.135.182.81/api/users/login',{
         method: 'POST',
         headers:{
             'Content-Type':'application/json'
