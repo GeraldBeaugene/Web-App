@@ -1,0 +1,274 @@
+<html lang = en>
+<head>
+    <title>
+        Flights Page
+    </title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .main{
+            margin-top:30px;
+            margin-bottom:30px;
+            text-align:center;
+            background-color: #333333;
+            border-radius: 20px;
+            padding:10px;
+        }
+
+        .data-row{
+            color:white;
+            margin-top:10px;
+            margin-bottom:10px;
+            height:50px;
+        }
+
+        .search-wrapper{
+            margin-bottom:30px;
+            color:white;
+        }
+
+        .search{
+            margin-bottom: 10px;
+        }
+
+        .search-box{
+            width:40%
+        }
+
+        .label{
+            color:white;
+            text-align:center;
+        }
+
+        .button{
+            margin-top:20px;
+            width:60%;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="head">
+        <%- include('partials/head')%>
+    </div>
+    <%- include('partials/nav')%>
+
+    <div class="container main">
+    <form class="form-group row input-box" id="inputdata">
+        <div class="col">
+            <label class="label">Planes</label>
+            <select type="text" class="form-control" required id="makemodel" name="planeid">
+                <option selected disabled>Make and Model</option>
+
+            </select>
+        </div>
+        <div class="col">
+            <label class="label">Flight Departure</label>
+            <select type="text" class="form-control" required id="depart" name="departid">
+                <option selected disabled>Departure Location</option>
+
+            </select>
+        </div>
+        <div class="col">
+            <label class="label">Flight Arrival</label>
+            <select type="text" class="form-control" required id="arrive" name="arriveid">
+                <option selected disabled>Arrival Location</option>
+
+            </select>
+        </div>
+        <div class="col">
+            <label class="label">Date</label>
+            <input type="date" class="form-control" placeholder="YYYY/MM/DD" required name="date">
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary button" id="addflight"> Add Flight </button>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary button" id="deleteflight"> Delete Flight </button>
+            </div>
+        </div>
+    </form>
+    </div>
+
+    <div class="container main">
+        <div class="search-wrapper">
+            <label for="search" class="search"> Search Flights </label>
+            <div class="col-5 col-centered">
+                <input class="form-control" type="search" id="search" class="search-box">
+            </div>
+        </div>
+
+        <div class="container-fluid data-row" >
+            <div class="row">
+                <div class="col">
+                    <label>Make</label>
+                </div>
+                <div class="col">
+                    <label>Model</label>
+                </div>
+                <div class="col">
+                    <label>Flight Departure</label>
+                </div>
+                <div class="col">
+                    <label>Flight Arrival</label>
+                </div>
+                <div class="col">
+                    <label>Date</label>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="senddata">
+
+        </div>
+
+
+    </div>
+
+</body>
+
+<script>
+    fetch('http://127.0.0.1:5000/api/flights/all', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+    }).then(res => res.json())
+        .then(completedata => {
+        data = ''
+        completedata.map(info => data +=
+        '<div class="row data-row">' +
+           '<div class="col">' +
+                '<label>'+info.make+'</label>' +
+            '</div>' +
+            '<div class="col">' +
+                '<label>'+info.model+'</label>' +
+            '</div>' +
+            '<div class="col">' +
+                '<label>'+info.from_airport+'</label>' +
+            '</div>' +
+            '<div class="col">' +
+                '<label>'+info.to_airport+'</label>' +
+            '</div>' +
+            '<div class="col">' +
+                '<label>'+info.date+'</label>'+
+            '</div>' +
+        '</div>');
+       document.getElementById('senddata').innerHTML=data
+        searchdata = completedata.map(info => {
+            return {make:info.make, model:info.model, depart:info.from_airport, arrive:info.to_airport, date:info.date}
+        })
+    })
+
+    fetch('http://127.0.0.1:5000/api/planes/all', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+    }).then(res => res.json())
+        .then(completedata => {
+        planedata = []
+        planedata = completedata.map(info => {
+            return info})
+        planedata.forEach(info => {
+            const sel = document.getElementById('makemodel')
+            const opt = document.createElement('option')
+            opt.text = info.make+' '+info.model
+            opt.value = info.id
+            sel.append(opt)})
+    })
+
+    fetch('http://127.0.0.1:5000/api/airports/all', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+    }).then(res => res.json())
+        .then(completedata => {
+            airportdata = []
+            airportdata = completedata.map(info => {
+                return info})
+            airportdata.forEach(info => {
+                const seldepart = document.getElementById('depart')
+                const selarrive = document.getElementById('arrive')
+                const optdepart = document.createElement('option')
+                const optarrive = document.createElement('option')
+                optdepart.text = info.airport_name
+                optdepart.value = info.id
+                optarrive.text = info.airport_name
+                optarrive.value = info.id
+                selarrive.append(optarrive)
+                seldepart.append(optdepart)})
+        })
+
+    const form = document.getElementById('inputdata')
+        form.addEventListener('submit', function(e){
+        e.preventDefault()
+        const payload = new FormData(document.getElementById('inputdata'))
+        const data = Object.fromEntries(payload)
+
+        if (e.submitter.id === 'addflight'){
+            fetch('http://127.0.0.1:5000/api/flights/add',{
+                method: 'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify(data)
+            }).then(res => res.json()).then(res => console.log(res))
+            window.alert('Flight Added')
+            window.location.reload()
+        }
+
+        if (e.submitter.id === 'deleteflight'){
+            fetch('http://127.0.0.1:5000/api/flights/delete',{
+                method: 'DELETE',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify(data)
+            }).then(res => res.json()).then(res => console.log(res)).catch((err) => console.log(err))
+            window.alert('Flight Deleted')
+            window.location.reload()
+        }
+    })
+
+    searchdata = []
+
+    const search = document.getElementById('search')
+        search.addEventListener('input', (e) => {
+        const value = e.target.value.toLowerCase()
+        Filtereddata = searchdata.filter(info => {
+            return (
+                info.make.toLowerCase().includes(value) || info.depart.toLowerCase().includes(value) ||
+                info.arrive.toLowerCase().includes(value) || info.date.toLowerCase().includes(value) ||
+                info.model.toLowerCase().includes(value)
+            )
+        })
+        data = ''
+        Filtereddata.map(info => data +=
+            '<div class="row data-row">' +
+            '<div class="col">' +
+            '<label>'+info.make+'</label>' +
+            '</div>' +
+            '<div class="col">' +
+            '<label>'+info.model+'</label>' +
+            '</div>' +
+            '<div class="col">' +
+            '<label>'+info.depart+'</label>' +
+            '</div>' +
+            '<div class="col">' +
+            '<label>'+info.arrive+'</label>' +
+            '</div>' +
+            '<div class="col">' +
+            '<label>'+info.date+'</label>'+
+            '</div>' +
+            '</div>')
+        document.getElementById('senddata').innerHTML=data})
+
+</script>
+</html>

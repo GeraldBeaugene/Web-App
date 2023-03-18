@@ -1,0 +1,113 @@
+body {
+    background-image: url('https://inseroats.com/media/pknd4zar/airport-1920-x-1280.jpg');
+    background-size: 1600px 900px;
+    background-repeat: no-repeat;
+    background-attachment: fixed
+}
+
+.head{
+    color: black;
+    size:50px;
+
+    left:50%;
+    padding-top:10px;
+    padding-bottom:20px;
+
+    text-align: center;
+}
+
+.badpass{
+    color:black;
+    size:50px;
+    position: fixed;
+    left:50%;
+    padding-top:200px;
+    transform:translate(-50%,-50%);
+    text-align: center;
+}
+
+.form{
+    color:white;
+    font-size: 20px;
+    text-align:center;
+    margin: auto;
+    width: 25%;
+    border: 10px blue;
+    padding: 10px;
+    background-color: #333333;
+    border-radius: 30px;
+    position:relative;
+}
+
+.label{
+    color:white;
+    text-align:center;
+}
+
+.button{
+    margin-top:20px;
+    width:40%;
+}
+
+a:link{
+    color: darkslateblue;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.link{
+    padding-top: 10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    font-size: 20px;
+}
+
+li {
+    float:left;
+}
+
+li a {
+    display:block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: darkgray;
+}
+
+.about{
+    padding:10px;
+    box-shadow: 0 0 4px 3px black;
+    font-size:20px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #333333;
+    width: 50%;
+    border-radius: 30px;
+    color: white;
+    text-align: center;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+}
+
+@media (min-width: 992px) {
+}
