@@ -57,7 +57,7 @@
 </div>
 <%- include('partials/nav')%>
 
-<div class="container main">
+<div class="container main results">
     <form class="form-group row input-box" id="inputdata">
         <div class="col">
             <label class="label">Airport Code</label>
@@ -82,7 +82,7 @@
     </form>
 </div>
 
-<div class="container main">
+<div class="container main results">
     <div class="search-wrapper">
         <label for="search" class="search"> Search Airport </label>
         <div class="col-5 col-centered">
@@ -124,7 +124,7 @@
         .then(completedata => {
             data = ''
             completedata.map(info => data +=
-                '<div class="row data-row">' +
+                '<div class="row data-row results">' +
                 '<div class="col">' +
                 '<label>'+info.airport_code+'</label>' +
                 '</div>' +
@@ -186,7 +186,7 @@
         })
         data = ''
         Filtereddata.map(info => data +=
-            '<div class="row data-row">' +
+            '<div class="row data-row results">' +
             '<div class="col">' +
             '<label>'+info.code+'</label>' +
             '</div>' +

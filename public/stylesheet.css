@@ -104,25 +104,33 @@ li a:hover {
     margin: 0 auto;
 }
 
+.results{
+    font-size: 20px;
+}
+
 @media (max-width: 768px) {
+    .results {
+        font-size: 10px;
+    }
     body {
         background-image: url('https://inseroats.com/media/pknd4zar/airport-1920-x-1280.jpg');
         background-size: 768px 850px;
         background-repeat: no-repeat;
         background-attachment: fixed
     }
-    form {
+    .form {
         color:white;
         font-size: 15px;
         text-align:center;
         margin: auto;
+        width:70%;
         border: 10px blue;
         padding: 10px;
         background-color: #333333;
         border-radius: 30px;
         position:relative;
     }
-    head {
+    .head {
         color: black;
         size:50px;
         left:50%;
@@ -137,6 +145,14 @@ li a:hover {
         overflow: hidden;
         background-color: #333;
         font-size: 15px;
+    }
+    li a {
+        display:block;
+        color: white;
+        font-size:15px;
+        text-align: center;
+        padding: 10px 12px;
+        text-decoration: none;
     }
 }
 
