@@ -27,7 +27,7 @@ const redirectHome = (req, res, next) => {
 }
 
 const {
-    sess_lifetime = 1000*60*5,
+    sess_lifetime = 1000*60*10,
     name = 'MyCookie',
     secret = 'Some Secret',
 

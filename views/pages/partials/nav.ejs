@@ -1,10 +1,31 @@
-<nav>
-    <ul>
-        <li><a class="active" href="/about">About</a></li>
-        <li><a class="active" href="/flights">Flights</a></li>
-        <li><a class="active" href="/planes">Planes</a></li>
-        <li><a class="active" href="/airports">Airports</a></li>
-        <li><a class="active" href="/updates">Update</a></li>
-        <li style="float:right"><a class="active" href="/login">Logout</a></li>
-    </ul>
-</nav>
+<html lang = en>
+<head>
+    <script defer>
+        document.addEventListener('click', e => {
+            const isDropdownButton = e.target.matches("[data-dropdown-button]")
+            if (!isDropdownButton && e.target.closest("[data-dropdown]") != null) return
+            let currentDropdown
+            if (isDropdownButton) {
+                currentDropdown = e.target.closest("[data-dropdown]")
+                currentDropdown.classList.toggle('active')
+            }
+            document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
+                if (dropdown === currentDropdown) return
+                dropdown.classList.remove('active')
+            })
+        })
+    </script>
+</head>
+<div class="navbar">
+    <div class="dropdown" data-dropdown>
+        <button class="dropbtn" data-dropdown-button>Menu</button>
+        <div class="dropdown-content info-grid">
+            <a  href="/about"> About </a>
+            <a  href="/flights"> Flights </a>
+            <a  href="/planes"> Planes </a>
+            <a  href="/airports"> Airports </a>
+            <a  href="/updates"> Update </a>
+        </div>
+    </div>
+    <a  style=float:left class="dropbtn logout-btn" href="/login"> Logout </a>
+</div>
