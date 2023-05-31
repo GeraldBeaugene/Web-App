@@ -210,6 +210,8 @@ a:link{
     box-shadow: 0 0 4px 3px black;
     padding: 20px;
     overflow: hidden;
+    position: relative;
+    z-index: 0;
 }
 
 .map{
