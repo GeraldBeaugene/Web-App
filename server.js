@@ -60,6 +60,10 @@ app.get('/flights', redirectLogin, (req, res) =>{
     res.render('pages/flights.ejs')
 })
 
+app.get('/map', redirectLogin, (req, res,) =>{
+    res.render('pages/map.ejs')
+})
+
 app.get('/about', redirectLogin, (req, res) =>{
     res.render('pages/about.ejs')
 })

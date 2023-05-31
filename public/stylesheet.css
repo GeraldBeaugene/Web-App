@@ -173,7 +173,7 @@ a:link{
     text-align:center;
     background-color: #333333;
     border-radius: 20px;
-    padding:10px;
+    padding:15px;
 }
 
 .data-row{
@@ -199,6 +199,28 @@ a:link{
 .label{
     color:white;
     text-align:center;
+}
+
+.map-container{
+    background-color: #333333;
+    margin-top: 20px;
+    height: 70%;
+    width: 70%;
+    border-radius: 20px;
+    box-shadow: 0 0 4px 3px black;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.map{
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.row{
+    align-items: stretch;
+    justify-content: center;
 }
 
 @media (max-width: 768px) {
